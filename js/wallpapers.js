@@ -8,28 +8,58 @@
 const currentValue = document.querySelector('.currentValue');
 const wallpaper_border = document.querySelector('.width-adjusting-to-height .content .border2');
 
-const form = document.forms.colorpicker;
-const radios = form.elements.color;
+const colorPicker_form = document.forms.colorpicker;
+const colorPicker_radios = colorPicker_form.elements.color;
+
+const deviceToggle_form = document.forms.deviceToggle;
+const deviceToggle_radios = deviceToggle_form.elements.dt;
 const border_black = "https://assets.codepen.io/1274185/bergenborders.png";
 const bergen_image = "https://assets.codepen.io/1274185/bergen+%281%29.jpg";
+const transparent_radio =  document.getElementById("transparent")
+const colorpicker_tl = gsap.timeline({});
+
+colorpicker_tl.from( ".colorpicker form label", {
+  y: 33,
+  opacity: 0,
+  stagger: .033,
+  ease: "back.inOut",
+});
+
+deviceToggle_radios.addEventListener('change', () => {
+   // Checked means Mobile, unchecked means Desktop.
+   if(deviceToggle_radios.checked){
+     console.log("checked");
+     transparent_radio.checked = true;
+     updateColorPicker();
+     colorpicker_tl.reverse();
+   }
+   else{
+     console.log("unchecked");
+     colorpicker_tl.play();
+   }
 
 
-mergeImages([bergen_image, border_black])
-  .then(b64 => document.querySelector('.test').src = b64);
-  // data:image/png;base64,iVBORw0KGgoAA...
+});
 
+// mergeImages([bergen_image, border_black])
+//   .then(b64 => document.querySelector('.test').src = b64);
+//   // data:image/png;base64,iVBORw0KGgoAA...
+//
 
 // show selected on page load
 // currentValue.innerText = radios.value;
-wallpaper_border.style.borderColor = radios.value;
+wallpaper_border.style.borderColor = colorPicker_radios.value;
 
 // convert the RadioNodeList to an Array and using [].find() to get the element
-console.log(Array.from(form.elements.color).find(radio => radio.checked));
+console.log(Array.from(colorPicker_form.elements.color).find(colorPicker_radio => colorPicker_radio.checked));
 
 // show latest value when radio checked changes
-radios.forEach(radio => {
-  radio.addEventListener('change', () => {
-		// currentValue.innerText = radios.value;
-		wallpaper_border.style.backgroundColor = radios.value;
+colorPicker_radios.forEach(colorPicker_radio => {
+  colorPicker_radio.addEventListener('change', () => {
+		 // currentValue.innerText = radios.value;
+		updateColorPicker();
   });
 });
+function updateColorPicker(){
+  wallpaper_border.style.backgroundColor = colorPicker_radios.value;
+}

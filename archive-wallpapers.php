@@ -9,11 +9,29 @@
 
 get_header();
 ?>
-<div class="container container-wallpaper d-flex flex-column  justify-content-between">
 
-	<img class="test" src="" />
+<div class="container container-wallpaper h-100 my-4 py-3 d-flex flex-column  justify-content-around">
+<?php
 
-	<div class="py-5 flex-fill d-flex justify-content-center">
+$args = array(
+	'post_type' => 'wallpapers',
+	'post_status' => 'publish',
+	'order' => 'RAND'
+);
+
+$loop = new WP_Query( $args );
+
+while ( $loop->have_posts() ) : $loop->the_post();
+		print the_title();
+endwhile;
+
+wp_reset_postdata();
+
+
+ ?>
+
+
+	<div class="my-3 flex-fill d-flex justify-content-center">
 		<div class="width-adjusting-to-height">
 			<!-- the viewbox will provide the desired aspect ratio -->
 			<svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +51,7 @@ get_header();
 		</div>
 	</div>
 
-	<div class="container py-3">
+	<div class="container ">
 		<div class="colorpicker d-flex justify-content-center" class="color">
 			<form name="colorpicker">
 
@@ -73,41 +91,20 @@ get_header();
 					<span class="offwhite" </span>
 				</label>
 			</form>
-			You've selected:
-			<div class="currentValue"></div>
-			<!-- 	<form name="colorpicker"> -->
-			<!-- 	Transparent		 -->
-			<!-- 			<input type="radio" name="color" id="transparent" value="transparent" class="color" checked="checked"/>
-		<label for="transparent"><span class="transparent" class="transparent"></span></label> -->
-
-			<!-- 	White		 -->
-			<!-- 		<label for="white" class="color">
-			<span class="white"></span>
-			<input type="radio" name="color" id="white" value="white" class="color" />
-		</label> -->
-
-			<!-- 	beige		 -->
-			<!-- 		<label for="beige" class="color">
-			<span class="beige"></span>
-			<input type="radio" name="color" id="beige" value="beige" class="color" />
-		</label> -->
-			<!-- 		<input type="radio" name="color" id="beige" class="color"/>
-		<label for="beige" class="color"><span class="beige"></span></label> -->
-
-			<!-- 			</form> -->
-
+			<!-- You've selected:
+			<div class="currentValue"></div> -->
 		</div>
 
 	</div>
 
-	<div class="d-flex justify-content-center align-items-middle mb-2 py-2">
-		<div class="toggle mx-2">
-			<input id="dt" type="checkbox" />
+	<div class="d-flex justify-content-center align-items-middle mb-3 py-4">
+		<form class="toggle mx-2" name="deviceToggle">
+			<input id="dt" type="checkbox" name="dt"/>
 			<label class="toggle-item" for="dt">
 
 			</label>
 
-		</div>
+		</form>
 
 		<a class="download  mx-2">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">

@@ -140,10 +140,22 @@ add_action( 'widgets_init', 'bergenstheme_widgets_init' );
  * Enqueue scripts and styles.
  */
 function bergenstheme_scripts() {
+	wp_enqueue_style( 'bergenstheme-style-bs', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css', array(), _S_VERSION );
 	wp_enqueue_style( 'bergenstheme-style', get_stylesheet_uri(), array(), _S_VERSION );
+
+	wp_enqueue_script( 'bergenstheme-bootstrap', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), _S_VERSION, true );
+
+	wp_enqueue_script( 'bergenstheme-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js', array(), _S_VERSION, true );
+
+		wp_enqueue_script( 'bergenstheme-gsap-core', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js', array(), _S_VERSION, true );
+
+			wp_enqueue_script( 'bergenstheme-gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js', array(), _S_VERSION, true );
+
 	wp_style_add_data( 'bergenstheme-style', 'rtl', 'replace' );
 
+
 	wp_enqueue_script( 'bergenstheme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+		wp_enqueue_script( 'bergenstheme-wallpapers', get_template_directory_uri() . '/js/wallpapers.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -178,3 +190,22 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+
+
+
+// wallpapers
+add_action('acf/save_post', 'update_wallpapers', 30);
+
+function update_wallpapers( $post_id ) {
+
+	$post_type = get_post_type($post_id);
+	if ( 'wallpapers' == $post_type ) {
+
+		echo "made it";
+	}
+	else {
+		return;
+	}
+}
+// add_action( 'publish_wallpapers', 'a_new_post', 10, 3 );

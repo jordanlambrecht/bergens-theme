@@ -1001,8 +1001,11 @@ footer .footer-wrapper{
   --border-width: 1.1em;
 }
 
-body.wallpapers {
+body.post-type-archive-wallpapers{
   background: var(--color-pink);
+}
+body.post-type-archive-wallpapers footer div p{
+	color: var(--color-dark);
 }
 
 * {
@@ -1023,11 +1026,12 @@ body.wallpapers {
 
 .width-adjusting-to-height {
   display: inline-block;
-  height: 66vh;
+  height: 60vh;
   /* change to whatever you like */
-  max-height: calc(100vw * .58);
+  max-height: calc(100vw * .45);
   position: relative;
   z-index: 1;
+	margin-bottom: 3em;
 }
 
 .width-adjusting-to-height > svg {
@@ -1060,6 +1064,7 @@ body.wallpapers {
   top: 0;
   width: 100%;
   height: 100%;
+	transition: all .33s ease;
   z-index: 1;
 }
 
@@ -1083,6 +1088,7 @@ body.wallpapers {
     justify-content: center; */
   overflow: hidden;
   position: relative;
+	padding-bottom:5em;
 }
 
 @media (max-width: 960px) {
