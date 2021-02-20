@@ -1129,7 +1129,7 @@ body.post-type-archive-wallpapers footer div p{
 
 .download:hover::before,
 .download:hover svg {
-  transform: scale(0.9, 0.85);
+  transform: scale(0.95, 0.85);
 }
 
 .download svg {
@@ -1329,4 +1329,31 @@ label.toggle-item:after {
 }
 .colorpicker form label span.offwhite {
   background: #F2E8DF;
+}
+.wp-nav-button{
+	text-decoration: none;
+	font-size: 16px;
+	color: var(--color-dark);
+	background-color: #fff;
+	border-radius: 16px;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	vertical-align: middle;
+	transition: all .22s ease-in-out;
+}
+.wp-nav-button i {
+	padding-left: .66em;
+	margin-bottom:0;
+	padding-right: .66em;
+	font-size: 2em;
+	font-weight: 600;
+	line-height: 2em;
+	color: var(--color-dark);
+}
+.wp-nav-button:hover{
+	transform: scale(1.075);
 }

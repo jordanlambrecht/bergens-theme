@@ -1,8 +1,30 @@
+/*jshint esversion: 6 */
 /**
  * File wallpapers.js.
  *
  * Handles the wallpapers CPT
  */
+// flickity
+let laptopBackground = document.querySelector(".main-carousel");
+var flkty = new Flickity( laptopBackground, {
+  // options
+  lazyLoad: true,
+  wrapAround: true,
+  cellAlign: 'left',
+  contain: true,
+  prevNextButtons: false,
+  pageDots: false
+});
+// previous
+var previousButton = document.querySelector('.wp-nav-button-left');
+previousButton.addEventListener( 'click', function() {
+  flkty.previous();
+});
+// next
+var nextButton = document.querySelector('.wp-nav-button-right');
+nextButton.addEventListener( 'click', function() {
+  flkty.next();
+});
 
 // inject the checked value
 const currentValue = document.querySelector('.currentValue');
@@ -15,13 +37,13 @@ const deviceToggle_form = document.forms.deviceToggle;
 const deviceToggle_radios = deviceToggle_form.elements.dt;
 const border_black = "https://assets.codepen.io/1274185/bergenborders.png";
 const bergen_image = "https://assets.codepen.io/1274185/bergen+%281%29.jpg";
-const transparent_radio =  document.getElementById("transparent")
+const transparent_radio =  document.getElementById("transparent");
 const colorpicker_tl = gsap.timeline({});
 
 colorpicker_tl.from( ".colorpicker form label", {
   y: 33,
   opacity: 0,
-  stagger: .033,
+  stagger: 0.033,
   ease: "back.inOut",
 });
 

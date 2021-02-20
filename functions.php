@@ -140,10 +140,19 @@ add_action( 'widgets_init', 'bergenstheme_widgets_init' );
  * Enqueue scripts and styles.
  */
 function bergenstheme_scripts() {
+
+	wp_enqueue_style( 'bergenstheme-booticons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css', array(), _S_VERSION );
+
+
 	wp_enqueue_style( 'bergenstheme-style-bs', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css', array(), _S_VERSION );
 	wp_enqueue_style( 'bergenstheme-style', get_stylesheet_uri(), array(), _S_VERSION );
 
+
+		wp_enqueue_style( 'bergenstheme-flickity', 'https://unpkg.com/flickity@2/dist/flickity.min.css', array(), _S_VERSION );
+
 	wp_enqueue_script( 'bergenstheme-bootstrap', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), _S_VERSION, true );
+
+	wp_enqueue_script( 'bergenstheme-flickity', 'https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js', array(), _S_VERSION, true );
 
 	wp_enqueue_script( 'bergenstheme-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js', array(), _S_VERSION, true );
 

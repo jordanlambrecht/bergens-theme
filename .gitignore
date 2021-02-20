@@ -28,6 +28,8 @@ node_modules/
 *.sql
 *.sqlite
 
+*.ftpignore
 .ftpignore
+*.ftpignore
 .ftpconfig
 .eslintrc

@@ -11,6 +11,7 @@ get_header();
 ?>
 
 <div class="container container-wallpaper h-100 my-4 py-3 d-flex flex-column  justify-content-around">
+
 <?php
 
 $args = array(
@@ -32,7 +33,7 @@ wp_reset_postdata();
 
 
 	<div class="my-3 flex-fill d-flex justify-content-center">
-		<div class="width-adjusting-to-height">
+		<div class=" width-adjusting-to-height">
 			<!-- the viewbox will provide the desired aspect ratio -->
 			<svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
 				<ellipse cx="85.2" cy="35.1" class="st0" rx="4.5" ry="4.4" />
@@ -42,17 +43,38 @@ wp_reset_postdata();
 				<path fill="#fff" d="M488.1 269.6H310v1.6c0 4.9-4.1 9-9.2 9H199.2c-5 0-9.2-4-9.2-9v-1.6H11.9c-4.3 0-7.8 3.4-7.8 7.6v11c0 4.2 3.5 7.6 7.8 7.6H488c4.3 0 7.8-3.4 7.8-7.6v-11c0-4.2-3.5-7.6-7.7-7.6z" />
 				<path d="M488.1 300H11.9C5.4 300 0 294.7 0 288.2v-11c0-6.5 5.4-11.8 11.9-11.8h182.2v5.8c0 2.6 2.2 4.8 5 4.8h101.6c2.8 0 5-2.2 5-4.8v-5.8h182.2c6.6 0 11.9 5.3 11.9 11.8v11c.2 6.5-5.2 11.8-11.7 11.8zM11.9 273.7c-2 0-3.6 1.6-3.6 3.5v11c0 1.9 1.6 3.5 3.6 3.5H488c2 0 3.6-1.6 3.6-3.5v-11c0-1.9-1.6-3.5-3.6-3.5H313.9c-1.2 6-6.6 10.6-13.1 10.6H199.2c-6.4 0-11.8-4.5-13.1-10.6H11.9z" class="st0" />
 			</svg>
-			<div class="content">
+			<div class="main-carousel content ">
 
-				<img class="inner" id="computerscreen" src="https://assets.codepen.io/1274185/bergen_road.jpg" />
+				<?php
+				$args = array(
+					'post_type' => 'wallpapers',
+					'post_status' => 'publish',
+					'order' => 'RAND'
+				);
+				$loop = new WP_Query( $args );
+				while ( $loop->have_posts() ) : $loop->the_post();
+						$img =  get_field('wallpaper_image');
+
+						if( $img ):
+							$imgURL = $img['url']; ?>
+
+							<img class="carousel-cell inner" alt="<?php echo $img['title']; ?>" src="<?php echo $imgURL; ?>" />
+
+			<?php	endif; endwhile;
+				wp_reset_postdata();
+
+
+				 ?>
+
 				<div class="border2"></div>
 
 		</div>
 		</div>
 	</div>
 
-	<div class="container ">
-		<div class="colorpicker d-flex justify-content-center" class="color">
+	<div class="container d-flex justify-content-center align-items-middle ">
+		<a class="wp-nav-button wp-nav-button-left mx-2"><i class="bi bi-caret-left"></i></a>
+		<div class=" mx-1 px-1 colorpicker d-flex justify-content-center align-items-middle" class="color">
 			<form name="colorpicker">
 
 				<!-- 		Transparent		  -->
@@ -94,7 +116,7 @@ wp_reset_postdata();
 			<!-- You've selected:
 			<div class="currentValue"></div> -->
 		</div>
-
+		<a class="wp-nav-button wp-nav-button-right mx-2"><i class="bi bi-caret-right"></i></a>
 	</div>
 
 	<div class="d-flex justify-content-center align-items-middle mb-3 py-4">
