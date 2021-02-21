@@ -1,4 +1,5 @@
 /*jshint esversion: 6 */
+
 /**
  * File wallpapers.js.
  *
@@ -28,7 +29,8 @@ nextButton.addEventListener( 'click', function() {
 
 // inject the checked value
 const currentValue = document.querySelector('.currentValue');
-const wallpaper_border = document.querySelector('.width-adjusting-to-height .content .border2');
+const wallpaper_primary =  document.querySelector('.main-carousel');
+const wallpaper_border = window.getComputedStyle(wallpaper_primary, "::after");
 
 const colorPicker_form = document.forms.colorpicker;
 const colorPicker_radios = colorPicker_form.elements.color;
@@ -63,15 +65,8 @@ deviceToggle_radios.addEventListener('change', () => {
 
 });
 
-// mergeImages([bergen_image, border_black])
-//   .then(b64 => document.querySelector('.test').src = b64);
-//   // data:image/png;base64,iVBORw0KGgoAA...
-//
-
-// show selected on page load
-// currentValue.innerText = radios.value;
-wallpaper_border.style.borderColor = colorPicker_radios.value;
-
+wallpaper_border.style.backgroundColor = colorPicker_radios.value;
+console.log(colorPicker_radios.value);
 // convert the RadioNodeList to an Array and using [].find() to get the element
 console.log(Array.from(colorPicker_form.elements.color).find(colorPicker_radio => colorPicker_radio.checked));
 
@@ -79,6 +74,7 @@ console.log(Array.from(colorPicker_form.elements.color).find(colorPicker_radio =
 colorPicker_radios.forEach(colorPicker_radio => {
   colorPicker_radio.addEventListener('change', () => {
 		 // currentValue.innerText = radios.value;
+     console.log("changed");
 		updateColorPicker();
   });
 });

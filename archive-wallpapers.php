@@ -43,7 +43,9 @@ wp_reset_postdata();
 				<path fill="#fff" d="M488.1 269.6H310v1.6c0 4.9-4.1 9-9.2 9H199.2c-5 0-9.2-4-9.2-9v-1.6H11.9c-4.3 0-7.8 3.4-7.8 7.6v11c0 4.2 3.5 7.6 7.8 7.6H488c4.3 0 7.8-3.4 7.8-7.6v-11c0-4.2-3.5-7.6-7.7-7.6z" />
 				<path d="M488.1 300H11.9C5.4 300 0 294.7 0 288.2v-11c0-6.5 5.4-11.8 11.9-11.8h182.2v5.8c0 2.6 2.2 4.8 5 4.8h101.6c2.8 0 5-2.2 5-4.8v-5.8h182.2c6.6 0 11.9 5.3 11.9 11.8v11c.2 6.5-5.2 11.8-11.7 11.8zM11.9 273.7c-2 0-3.6 1.6-3.6 3.5v11c0 1.9 1.6 3.5 3.6 3.5H488c2 0 3.6-1.6 3.6-3.5v-11c0-1.9-1.6-3.5-3.6-3.5H313.9c-1.2 6-6.6 10.6-13.1 10.6H199.2c-6.4 0-11.8-4.5-13.1-10.6H11.9z" class="st0" />
 			</svg>
+
 			<div class="main-carousel content ">
+				
 
 				<?php
 				$args = array(
@@ -66,9 +68,10 @@ wp_reset_postdata();
 
 				 ?>
 
-				<div class="border2"></div>
+
 
 		</div>
+
 		</div>
 	</div>
 
@@ -76,42 +79,34 @@ wp_reset_postdata();
 		<a class="wp-nav-button wp-nav-button-left mx-2"><i class="bi bi-caret-left"></i></a>
 		<div class=" mx-1 px-1 colorpicker d-flex justify-content-center align-items-middle" class="color">
 			<form name="colorpicker">
-
-				<!-- 		Transparent		  -->
+				<!-- Transparent is Always Shown	  -->
 				<input type="radio" name="color" id="transparent" value="rgba(0,0,0,0)" class="color" checked="checked" />
 				<label for="transparent">
 					<span class="transparent"></span>
 				</label>
+				<?php
+				if( have_rows('border_colors', 'options') ):
+			    while( have_rows('border_colors', 'options') ) : the_row();
 
-				<!-- 	white			  -->
-				<input type="radio" name="color" id="white" value="#fff" class="color" />
-				<label for="white">
-					<span class="white"></span>
-				</label>
+			        $border_color = get_sub_field('color');
+							$border_color_ID= (str_replace("#", "", $border_color));
 
-				<!-- 	olive			  -->
-				<input type="radio" name="color" id="olive" value="#71734C" class="color" />
-				<label for="olive">
-					<span class="olive"></span>
-				</label>
+							?>
 
-				<!-- 	blue			  -->
-				<input type="radio" name="color" id="blue" value="#192DA1" class="color" />
-				<label for="blue">
-					<span class="blue"></span>
-				</label>
+							<input type="radio" name="color" id="<?php echo $border_color_ID;?>" value="<?php echo $border_color?>" class="color" />
+							<label for="<?php echo $border_color_ID;?>">
+								<span class="<?php echo $border_color_ID;?>" style="background: <?php echo $border_color;?>"></span>
+							</label>
 
-				<!-- 	biege			  -->
-				<input type="radio" name="color" id="biege" value="#D9B29C" class="color" />
-				<label for="biege">
-					<span class="biege"></span>
-				</label>
 
-				<!-- 	offwhite			  -->
-				<input type="radio" name="color" id="offwhite" value="#F2E8DF" class="color" />
-				<label for="offwhite">
-					<span class="offwhite" </span>
-				</label>
+				    <?php endwhile;
+
+
+				else :
+				    // Do something...
+				endif;
+				?>
+
 			</form>
 			<!-- You've selected:
 			<div class="currentValue"></div> -->

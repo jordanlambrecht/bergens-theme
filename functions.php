@@ -217,4 +217,20 @@ function update_wallpapers( $post_id ) {
 		return;
 	}
 }
+// Get the styling for column repeaters
+function admin_theme_style()
+{
+  wp_enqueue_style( 'admin-theme', get_stylesheet_directory_uri() . '/style-admin.css', false, '1.0.0'  );
+}
+add_action('admin_enqueue_scripts', 'admin_theme_style');
 // add_action( 'publish_wallpapers', 'a_new_post', 10, 3 );
+
+
+// Add options page for Wallpapers cpt
+if( function_exists('acf_add_options_sub_page') ) {
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Wallpapers Settings',
+		'menu_title'	=> 'Wallpapers Settings',
+		'parent_slug'	=> 'edit.php?post_type=wallpapers',
+	));
+}

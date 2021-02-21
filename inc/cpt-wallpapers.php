@@ -58,45 +58,114 @@ function create_wallpaper_cpt() {
 
 }
 add_action( 'init', 'create_wallpaper_cpt', 0 );
+// Register Taxonomy Mood
+function create_mood_tax() {
+
+	$labels = array(
+		'name'              => _x( 'Moods', 'taxonomy general name', 'textdomain' ),
+		'singular_name'     => _x( 'Mood', 'taxonomy singular name', 'textdomain' ),
+		'search_items'      => __( 'Search Moods', 'textdomain' ),
+		'all_items'         => __( 'All Moods', 'textdomain' ),
+		'parent_item'       => __( 'Parent Mood', 'textdomain' ),
+		'parent_item_colon' => __( 'Parent Mood:', 'textdomain' ),
+		'edit_item'         => __( 'Edit Mood', 'textdomain' ),
+		'update_item'       => __( 'Update Mood', 'textdomain' ),
+		'add_new_item'      => __( 'Add New Mood', 'textdomain' ),
+		'new_item_name'     => __( 'New Mood Name', 'textdomain' ),
+		'menu_name'         => __( 'Mood', 'textdomain' ),
+	);
+	$args = array(
+		'labels' => $labels,
+		'description' => __( 'Is the wallpaper light or dark?', 'textdomain' ),
+		'hierarchical' => false,
+		'public' => false,
+		'publicly_queryable' => false,
+		'show_ui' => true,
+		'show_in_menu' => false,
+		'show_in_nav_menus' => false,
+		'show_tagcloud' => false,
+		'show_in_quick_edit' => false,
+		'show_admin_column' => false,
+		'show_in_rest' => true,
+		'rewrite' => false,
+	);
+	register_taxonomy( 'mood', array('wallpapers'), $args );
+
+}
+add_action( 'init', 'create_mood_tax' );
 
 
-
-function on_publish_pending_post( $post ) {
+function on_publish_pending_post(  $post_id ) {
 // A function to perform actions when a post is published.
 
 if ( "wallpapers" === get_post_type()) { // check the custom post type
 		$contactBool = true;
-
-    $name   = get_the_title( $post->ID );
+    $name   = get_the_title( $post_id );
 
 		$image =  get_field('wallpaper_image', $post_id  );
-		$border = get_field('wallpaper_border_1', $post_id);
-		$maskURL = get_stylesheet_directory() . '/images/bergenborders_mask.jpg';
-		$signatureURL = get_stylesheet_directory() . '/images/bergen_signature.png';
-		$compositetitle = $image['title'] . "-withborders" . ".jpg";
-		$imageURL = $image['url'];
-		$borderURL = $border['url'];
+		$sig 	 = 	get_field('signature', 'options');
+		if($image){
+			// $border = get_field('wallpaper_border_1', $post_id);
+			// $maskURL = get_stylesheet_directory() . '/images/bergenborders_mask.jpg';
+			$signatureURL = $sig['url'];
+			$compositetitle = $image['title'] . "-withborders" . ".jpg";
+			$imageURL = $image['url'];
+			// $borderURL = $border['url'];
+			$base = new \Imagick($imageURL);
+			$base->resizeImage(5120, 2880, Imagick::FILTER_LANCZOS, 1);
+			// TODO: Pull Signature from CPT Options Page
+			$signature = new \Imagick($signatureURL);
+			$im_d = $base->getImageGeometry();
+			$im_w = $im_d['width'];
+			$im_h = $im_d['height'];
+			$watermark_Width = $signature->getImageWidth();
+			$watermark_Height = $signature->getImageHeight();
+			$wm_margin = 5;
+			$wm_margin_w = ($im_w*($wm_margin/100));
+			$wm_margin_y = ($im_y*($wm_margin/100));
+			$wm_x = ($im_w - $watermark_Width - $wm_margin_w);
+			$wm_y = ($im_h - $watermark_Height - $wm_margin_y);
 
 
-		$base = new \Imagick($imageURL);
-		$mask = new \Imagick($maskURL);
-		$over = new \Imagick($borderURL);
-		$signature = new \Imagick($signatureURL);
 
-		// Setting same size for all images
-		$base->resizeImage(5120, 2880, Imagick::FILTER_LANCZOS, 1);
 
-		// Add overlay
-		$base->compositeImage($over, Imagick::COMPOSITE_DEFAULT, 0, 0);
-		$base->compositeImage($signature, Imagick::COMPOSITE_DEFAULT, 0, 0);
 
-		$upload_dir   = wp_upload_dir();
-		$our_dir = $upload_dir['basedir'] . "/testing";
+					$base->transformImageColorspace(imagick::COLORSPACE_HSL);
+					// Get statistics for the LIGHTNESS
+					$Lchannel = $base->getImageChannelMean(imagick::CHANNEL_BLUE);
+					$meanLightness = $Lchannel['mean']/65535;
+					// $draw = new ImagickDraw();
+					// $draw->setFillColor('#ffffff');
+					// $draw->setFontSize(100);
+					// $draw->setTextUnderColor('#ff000080');
+					if( $meanLightness < 0.5){
+						$darkornot = "dark";
+					}
+					else{
+						$darkornot = "light";
+					}
+					wp_set_object_terms($post_id, $darkornot, 'mood',false);
+					$darkornotstring = "the base lightness is: " . $darkornot;
 
-		$base -> writeImage($our_dir . $compositetitle);
-		header("Content-Type: image/jpg");
+		$base->transformImageColorspace(imagick::COLORSPACE_SRGB);
+			// Add overlay
+			// $base->compositeImage($over, Imagick::COMPOSITE_DEFAULT, 0, 0);
+			$base->compositeImage($signature, Imagick::COMPOSITE_OVER, $wm_x, $wm_y);
+			// $base->annotateImage($draw,90,150,0, $darkornotstring);
+			$base->borderImage('green', 100, 100);
+			$upload_dir   = wp_upload_dir();
+			$our_dir = $upload_dir['basedir'] . "/wallpapers" ."/";
 
-		echo $base;
+			$base -> writeImage($our_dir . $compositetitle);
+			header("Content-Type: image/jpg");
+
+			// echo $base;
+		}
+
+
+
+
+
 
 
 
@@ -138,7 +207,8 @@ if ( "wallpapers" === get_post_type()) { // check the custom post type
 
 }
 }
-add_action( "save_post_wallpapers", "on_publish_pending_post", 10, 1 );
+add_action( 'save_post_wallpapers', 'on_publish_pending_post', 10, 2 );
+
 
 
 function register_watermarked_size() {
