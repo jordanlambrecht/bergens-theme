@@ -17,9 +17,9 @@ var flkty = new Flickity( laptopBackground, {
   pageDots: false
 });
 // previous
-var previousButton = document.querySelector('.wp-nav-button-left');
+let previousButton = document.querySelector( '.wp-nav-button-left' );
 previousButton.addEventListener( 'click', function() {
-  flkty.previous();
+	flkty.previous();
 });
 // next
 var nextButton = document.querySelector('.wp-nav-button-right');
@@ -29,8 +29,7 @@ nextButton.addEventListener( 'click', function() {
 
 // inject the checked value
 const currentValue = document.querySelector('.currentValue');
-const wallpaper_primary =  document.querySelector('.main-carousel');
-const wallpaper_border = window.getComputedStyle(wallpaper_primary, "::after");
+const wallpaper_border =  document.querySelector('.border-2');
 
 const colorPicker_form = document.forms.colorpicker;
 const colorPicker_radios = colorPicker_form.elements.color;

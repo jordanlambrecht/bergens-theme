@@ -1038,7 +1038,18 @@ body.post-type-archive-wallpapers footer div p{
   height: 100%;
   z-index: 2;
 }
-
+.border-2{
+	position: absolute;
+	top: 6.2%;
+	left: 13.2%;
+	right: 13.2%;
+	bottom: 13.75%;
+	clip-path: polygon(0% 0%, 0% 100%, 3% 100%, 3% 5%, 97% 5%, 97% 95%, 3% 95%, 3% 100%, 100% 100%, 100% 0%);
+	z-index: 0;
+	background: transparent;
+	transition: all .33s ease;
+  z-index: 3;
+}
 .width-adjusting-to-height .content {
   position: absolute;
   top: 6.2%;
@@ -1056,18 +1067,16 @@ body.post-type-archive-wallpapers footer div p{
   z-index: -1;
 }
 
-.main-carousel::after {
+/* .main-carousel::after {
   border: 50px;
-  clip-path: polygon(0% 0%, 0% 100%, 3% 100%, 3% 5%, 97% 5%, 97% 95%, 3% 95%, 3% 100%, 100% 100%, 100% 0%);
+
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-	background: salmon;
-	transition: all .33s ease;
-  z-index: 3;
-}
+
+} */
 
 .salmon {
   background: salmon;

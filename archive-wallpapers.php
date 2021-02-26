@@ -45,7 +45,7 @@ wp_reset_postdata();
 			</svg>
 
 			<div class="main-carousel content ">
-				
+
 
 				<?php
 				$args = array(
@@ -63,6 +63,7 @@ wp_reset_postdata();
 							<img class="carousel-cell inner" alt="<?php echo $img['title']; ?>" src="<?php echo $imgURL; ?>" />
 
 			<?php	endif; endwhile;
+
 				wp_reset_postdata();
 
 
@@ -71,7 +72,9 @@ wp_reset_postdata();
 
 
 		</div>
+		<div class="border-2">
 
+		</div>
 		</div>
 	</div>
 
