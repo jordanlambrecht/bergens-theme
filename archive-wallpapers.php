@@ -51,7 +51,7 @@ wp_reset_postdata();
 				$args = array(
 					'post_type' => 'wallpapers',
 					'post_status' => 'publish',
-					'order' => 'RAND'
+					'order' => 'RAND' 
 				);
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();

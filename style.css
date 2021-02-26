@@ -66,7 +66,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 html {
 	line-height: 1.15;
 	-webkit-text-size-adjust: 100%;
@@ -404,7 +405,7 @@ select,
 optgroup,
 textarea {
 	color: #404040;
-	font-family: "Poppins", sans-serif;
+	font-family: Poppins, sans-serif;
 	font-size: 1rem;
 	line-height: 1.5;
 }
@@ -473,7 +474,7 @@ big {
 /* Elements
 --------------------------------------------- */
 body {
-	background:	#f9f9f9;
+	background: #f9f9f9;
 }
 
 hr {
@@ -968,17 +969,19 @@ textarea {
 	margin-right: auto;
 	margin-bottom: 1.5em;
 }
-main.site-main{
+
+main.site-main {
 	height: 100vh;
 	padding-left: 2em;
 	padding-right: 2em;
 	display: flex;
-  align-items: center;
-  justify-content: center;
+	align-items: center;
+	justify-content: center;
 }
-footer .footer-wrapper{
-	font-family: "Poppins", sans-serif;
-	text-align:center;
+
+footer .footer-wrapper {
+	font-family: Poppins, sans-serif;
+	text-align: center;
 	padding-left: 2em;
 	padding-right: 2em;
 	display: flex;
@@ -986,59 +989,65 @@ footer .footer-wrapper{
 	justify-content: center;
 	color: #c5c5c5;
 }
+
 /* wallpapers */
 
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
+@import url("https://fonts.googleapis.com/css?family=Lato:400,300");
+
 :root {
-  --base: 16em;
-  --buttonWidth: calc(var(--base)/4);
-  --transformMath: calc(var(--base) - (var(--buttonWidth)*1.33) );
-  --duration: .33s;
-  --color-dark: #262121;
-  --color-dark-rgba: rgba(38, 33, 33, .76);
-  --color-pink: #E4CAC9;
-  --border-color: #fff;
-  --border-width: 1.1em;
+	--base: 16em;
+	--buttonWidth: calc(var(--base) / 4);
+	--transformMath: calc(var(--base) - (var(--buttonWidth) *1.33));
+	--duration: 0.33s;
+	--color-dark: #262121;
+	--color-dark-rgba: rgba(38, 33, 33, 0.76);
+	--color-pink: #e4cac9;
+	--border-color: #fff;
+	--border-width: 1.1em;
 }
 
-body.post-type-archive-wallpapers{
-  background: var(--color-pink);
+body.post-type-archive-wallpapers {
+	background: var(--color-pink);
 }
-body.post-type-archive-wallpapers footer div p{
+
+body.post-type-archive-wallpapers footer div p {
 	color: var(--color-dark);
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-*:before, *:after {
-  content: "";
+*::before,
+*::after {
+	content: "";
 }
 
 .st0 {
-  fill: var(--color-dark);
+	fill: var(--color-dark);
 }
 
 .container-wallpaper {
-  height: 100vh;
+	height: 100vh;
 }
 
 .width-adjusting-to-height {
-  display: inline-block;
-  height: 60vh;
-  /* change to whatever you like */
-  max-height: calc(100vw * .45);
-  position: relative;
-  z-index: 1;
+	display: inline-block;
+	height: 60vh;
+
+	/* change to whatever you like */
+	max-height: calc(100vw * 0.45);
+	position: relative;
+	z-index: 1;
 	margin-bottom: 3em;
 }
 
 .width-adjusting-to-height > svg {
-  height: 100%;
-  z-index: 2;
+	height: 100%;
+	z-index: 2;
 }
-.border-2{
+
+/* .border-2 {
 	position: absolute;
 	top: 6.2%;
 	left: 13.2%;
@@ -1047,24 +1056,25 @@ body.post-type-archive-wallpapers footer div p{
 	clip-path: polygon(0% 0%, 0% 100%, 3% 100%, 3% 5%, 97% 5%, 97% 95%, 3% 95%, 3% 100%, 100% 100%, 100% 0%);
 	z-index: 0;
 	background: transparent;
-	transition: all .33s ease;
-  z-index: 3;
-}
+	transition: all 0.33s ease;
+	z-index: 3;
+} */
+
 .width-adjusting-to-height .content {
-  position: absolute;
-  top: 6.2%;
-  left: 13.2%;
-  right: 13.2%;
-  bottom: 13.75%;
-  z-index: -1;
+	position: absolute;
+	top: 6.2%;
+	left: 13.2%;
+	right: 13.2%;
+	bottom: 13.75%;
+	z-index: -1;
 }
 
 .width-adjusting-to-height .content .inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: -1;
 }
 
 /* .main-carousel::after {
@@ -1079,215 +1089,246 @@ body.post-type-archive-wallpapers footer div p{
 } */
 
 .salmon {
-  background: salmon;
+	background: salmon;
 }
 
 .toggle input {
-  height: 40px;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
+	height: 40px;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	top: 0;
 }
 
 .toggle-wrapper {
-  /*   flex: 1 1 calc(100% / 3);
+
+	/*   flex: 1 1 calc(100% / 3);
 
     display: flex;
     align-items: center;
     justify-content: center; */
-  overflow: hidden;
-  position: relative;
-	padding-bottom:5em;
+	overflow: hidden;
+	position: relative;
+	padding-bottom: 5em;
 }
 
 @media (max-width: 960px) {
-  .toggle-wrapper {
-    flex: 1 1 calc(100% / 2);
-  }
+
+	.toggle-wrapper {
+		flex: 1 1 calc(100% / 2);
+	}
 }
+
 @media (max-width: 700px) {
-  .toggle-wrapper {
-    flex: 1 1 100%;
-  }
+
+	.toggle-wrapper {
+		flex: 1 1 100%;
+	}
 }
+
 .download {
-  position: relative;
-  text-align: center;
-  width: 14%;
-  height: 4em;
-  border: 3px solid #fff;
-  border-radius: 1.66em;
-  cursor: pointer;
-  overflow: hidden;
+	position: relative;
+	text-align: center;
+	width: 14%;
+	height: 4em;
+	border: 3px solid #fff;
+	border-radius: 1.66em;
+	cursor: pointer;
+	overflow: hidden;
 }
 
 .download::before {
-  position: absolute;
-  background: #fff;
-  display: block;
-  border-radius: 1.44em;
-  border: 3px solid #fff;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-  transition: all 0.33s ease;
+	position: absolute;
+	background: #fff;
+	display: block;
+	border-radius: 1.44em;
+	border: 3px solid #fff;
+	z-index: -1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+	transition: all 0.33s ease;
 }
 
 .download:hover::before,
 .download:hover svg {
-  transform: scale(0.95, 0.85);
+	transform: scale(0.95, 0.85);
 }
 
 .download svg {
-  fill: var(--color-dark);
-  transform: all 0.33s ease;
-  width: 100%;
-  overflow: hidden;
-  height: 100%;
-  padding-top: 0.75em;
-  padding-bottom: 0.75em;
+	fill: var(--color-dark);
+	transform: all 0.33s ease;
+	width: 100%;
+	overflow: hidden;
+	height: 100%;
+	padding-top: 0.75em;
+	padding-bottom: 0.75em;
 }
 
 .download:hover svg {
-  animation: test 2.66s ease forwards;
-  animation-iteration-count: 100;
+	animation: test 2.66s ease forwards;
+	animation-iteration-count: 100;
 }
 
 @keyframes test {
-  0% {
-    transform: translateY(-50px);
-  }
-  100% {
-    transform: translateY(50px);
-  }
+
+	0% {
+		transform: translateY(-50px);
+	}
+
+	100% {
+		transform: translateY(50px);
+	}
 }
+
 label.toggle-item {
-  width: var(--base);
-  background: transparent;
-  height: 4em;
-  /*   display: inline-block; */
-  border: 3px solid #fff;
-  border-radius: 4em;
-  /*   margin: 40px; */
-  position: relative;
-  transition: all 0.3s ease;
-  /*   transform-origin: 20% center; */
-  cursor: pointer;
+	width: var(--base);
+	background: transparent;
+	height: 4em;
+
+	/*   display: inline-block; */
+	border: 3px solid #fff;
+	border-radius: 4em;
+
+	/*   margin: 40px; */
+	position: relative;
+	transition: all 0.3s ease;
+
+	/*   transform-origin: 20% center; */
+	cursor: pointer;
 }
 
-label.toggle-item:before {
-  position: absolute;
-  display: block;
-  transition: all 0.2s ease;
-  background: #fff;
-  width: var(--buttonWidth);
-  top: 0.25em;
-  bottom: 0.25em;
-  left: 0.3em;
-  border-radius: 4em;
-  border: 3px solid #fff;
-  animation: anim_uncheck var(--duration) ease forwards;
+label.toggle-item::before {
+	position: absolute;
+	display: block;
+	transition: all 0.2s ease;
+	background: #fff;
+	width: var(--buttonWidth);
+	top: 0.25em;
+	bottom: 0.25em;
+	left: 0.3em;
+	border-radius: 4em;
+	border: 3px solid #fff;
+	animation: anim_uncheck var(--duration) ease forwards;
 }
 
-label.toggle-item:after {
-  position: absolute;
-  display: block;
-  transition: all 0.2s ease;
-  background-color: #fff;
-  margin-left: 0.3em;
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
-  top: 25%;
-  left: calc(var(--buttonWidth)/3.75);
-  width: 32px;
-  height: 18px;
-  border: 2px solid var(--color-dark);
-  border-radius: 4px;
-  transform-origin: center center;
-  animation: anim_devicetype_uncheck var(--duration) ease 0s forwards;
+label.toggle-item::after {
+	position: absolute;
+	display: block;
+	transition: all 0.2s ease;
+	background-color: #fff;
+	margin-left: 0.3em;
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+	top: 25%;
+	left: calc(var(--buttonWidth) / 3.75);
+	width: 32px;
+	height: 18px;
+	border: 2px solid var(--color-dark);
+	border-radius: 4px;
+	transform-origin: center center;
+	animation: anim_devicetype_uncheck var(--duration) ease 0s forwards;
 }
 
-.toggle input[type=checkbox]:checked + label::before {
-  animation: anim_check var(--duration) ease 0s forwards;
+.toggle input[type="checkbox"]:checked + label::before {
+	animation: anim_check var(--duration) ease 0s forwards;
 }
 
-.toggle input[type=checkbox]:checked + label::after {
-  animation: anim_devicetype_check 0.33s ease 0s forwards;
+.toggle input[type="checkbox"]:checked + label::after {
+	animation: anim_devicetype_check 0.33s ease 0s forwards;
 }
 
 @keyframes anim_devicetype_check {
-  0% {
-    transform: translateX(0px) scale(1, 1);
-  }
-  50% {
-    width: calc(var(--buttonWidth)*.88);
-  }
-  100% {
-    height: 32px;
-    top: 7px;
-    left: 1.555em;
-    width: 18px;
-    transform: translateX(var(--transformMath)) scale(1, 1);
-  }
+
+	0% {
+		transform: translateX(0) scale(1, 1);
+	}
+
+	50% {
+		width: calc(var(--buttonWidth) * 0.88);
+	}
+
+	100% {
+		height: 32px;
+		top: 7px;
+		left: 1.555em;
+		width: 18px;
+		transform: translateX(var(--transformMath)) scale(1, 1);
+	}
 }
+
 @keyframes anim_devicetype_uncheck {
-  0% {
-    transform: translateX(var(--transformMath));
-  }
-  50% {
-    width: calc(var(--buttonWidth)*1.125);
-  }
-  100% {
-    transform: translateX(0px);
-  }
+
+	0% {
+		transform: translateX(var(--transformMath));
+	}
+
+	50% {
+		width: calc(var(--buttonWidth) * 1.125);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
 }
+
 @keyframes anim_check {
-  0% {
-    width: var(--buttonWidth);
-    transform: translateX(0px) scaleX(1);
-    background-color: #fff;
-  }
-  50% {
-    width: calc(var(--buttonWidth)*1.333);
-  }
-  100% {
-    transform: translateX(var(--transformMath)) scaleX(1);
-    background-color: #fff;
-    width: var(--buttonWidth);
-  }
+
+	0% {
+		width: var(--buttonWidth);
+		transform: translateX(0) scaleX(1);
+		background-color: #fff;
+	}
+
+	50% {
+		width: calc(var(--buttonWidth) * 1.333);
+	}
+
+	100% {
+		transform: translateX(var(--transformMath)) scaleX(1);
+		background-color: #fff;
+		width: var(--buttonWidth);
+	}
 }
+
 @keyframes anim_uncheck {
-  0% {
-    width: var(--buttonWidth);
-    transform: translateX(var(--transformMath));
-    background-color: #fff;
-  }
-  50% {
-    width: calc(var(--buttonWidth)*1.333);
-  }
-  100% {
-    width: var(--buttonWidth);
-    transform: translateX(0px);
-    background-color: #fff;
-  }
+
+	0% {
+		width: var(--buttonWidth);
+		transform: translateX(var(--transformMath));
+		background-color: #fff;
+	}
+
+	50% {
+		width: calc(var(--buttonWidth) * 1.333);
+	}
+
+	100% {
+		width: var(--buttonWidth);
+		transform: translateX(0);
+		background-color: #fff;
+	}
 }
-.colorpicker form input[type=radio] {
-  display: none;
+
+.colorpicker form input[type="radio"] {
+	display: none;
 }
-.colorpicker form input[type=radio]:checked + label span {
-  transform: scale(1.2);
-  border-color: var(--color-dark-rgba);
+
+.colorpicker form input[type="radio"]:checked + label span {
+	transform: scale(1.2);
+	border-color: var(--color-dark-rgba);
 }
-.colorpicker form input[type=radio]:checked + label .transparent {
-  border: 3px solid;
+
+.colorpicker form input[type="radio"]:checked + label .transparent {
+	border: 3px solid;
 }
-.colorpicker form input[type=radio]:checked + label span{
-  border: 3px solid;
+
+.colorpicker form input[type="radio"]:checked + label span {
+	border: 3px solid;
 }
+
 /* .colorpicker form input[type=radio]:checked + label .olive {
   border: 3px solid;
 }
@@ -1302,29 +1343,33 @@ label.toggle-item:after {
 } */
 
 .colorpicker form label {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-  cursor: pointer;
-  border: 3px solid #fff;
-  border-radius: 50%;
-  padding: 3px;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+	cursor: pointer;
+	border: 3px solid #fff;
+	border-radius: 50%;
+	padding: 3px;
 }
+
 .colorpicker form label:hover span {
-  transform-origin: center center;
-  transform: scale(1.24);
+	transform-origin: center center;
+	transform: scale(1.24);
 }
+
 .colorpicker form label span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  transition: transform 0.2s ease-in-out;
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	transition: transform 0.2s ease-in-out;
 }
+
 .colorpicker form label span.transparent {
-  background: transparent;
+	background: transparent;
 }
+
 /* .colorpicker form label span.white {
   background: #fff;
 }
@@ -1340,7 +1385,7 @@ label.toggle-item:after {
 .colorpicker form label span.offwhite {
   background: #F2E8DF;
 } */
-.wp-nav-button{
+.wp-nav-button {
 	text-decoration: none;
 	font-size: 16px;
 	color: var(--color-dark);
@@ -1353,17 +1398,19 @@ label.toggle-item:after {
 	justify-content: center;
 	text-align: center;
 	vertical-align: middle;
-	transition: all .22s ease-in-out;
+	transition: all 0.22s ease-in-out;
 }
+
 .wp-nav-button i {
-	padding-left: .66em;
-	margin-bottom:0;
-	padding-right: .66em;
+	padding-left: 0.66em;
+	margin-bottom: 0;
+	padding-right: 0.66em;
 	font-size: 2em;
 	font-weight: 600;
 	line-height: 2em;
 	color: var(--color-dark);
 }
-.wp-nav-button:hover{
+
+.wp-nav-button:hover {
 	transform: scale(1.075);
 }

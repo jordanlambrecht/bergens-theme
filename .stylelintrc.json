@@ -7,10 +7,17 @@
     ],
     "rules": {
         "font-family-no-missing-generic-family-keyword": null,
+        "max-line-length": null,
+        "font-family-name-quotes": "always-where-recommended",
+        "declaration-property-unit-whitelist": null,
         "no-descending-specificity": null,
         "block-no-empty": null,
         "no-duplicate-selectors": null,
         "font-family-no-duplicate-names": null,
-        "selector-class-pattern": null
+        "selector-class-pattern": null,
+        "declaration-property-unit-allowed-list": null,
+        "color-no-invalid-hex": true,
+        "color-named": null,
+        "function-url-quotes": "always"
     }
 }
