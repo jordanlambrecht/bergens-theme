@@ -163,3 +163,6 @@ node_modules/
 *.ftpignore
 .ftpconfig
 .eslintrc
+
+.stylelintrc.json
+prepros.config
